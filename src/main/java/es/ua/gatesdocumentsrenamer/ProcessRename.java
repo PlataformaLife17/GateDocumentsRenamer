@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package es.ua.gatedocumentsrenamer.main;
+package es.ua.gatesdocumentsrenamer;
 
 import es.upv.xmlutils.XMLUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,18 +21,21 @@ import org.xml.sax.SAXException;
  */
 public class ProcessRename {
 
-    private String dirInput;
-    private String dirOutput;
-    private String attribute;
+    private final String dirInput;
+    private final String dirOutput;
+    private final String attribute;
+    private final boolean rename;
 
     public ProcessRename(String dirInput, String dirOutput, String attribute) {
 
         this.dirInput = dirInput;
         this.dirOutput = dirOutput;
         this.attribute = attribute;
+        
+        this.rename = (this.dirInput.equals(this.dirOutput));
     }
 
-    public void renameFile() {
+    public void renameFile() throws IOException, FileNotFoundException, ParserConfigurationException, SAXException {
         String nombreDocumento;
 
         File directory = new File(dirInput);
@@ -42,20 +43,17 @@ public class ProcessRename {
 
             for (File f : directory.listFiles()) {
 
-                try {
-                    String attDocument = getAttibuteValue(f);
-
-                    nombreDocumento = "GATE_" + attDocument;
-
-                    saveFile(f, nombreDocumento);
-
-                } catch (IOException | ParserConfigurationException | SAXException ex) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                String attDocument = getAttibuteValue(f);
+                nombreDocumento = "GATE_" + attDocument;
+                saveFile(f, nombreDocumento);
             }
+            
+            if(directory.list().length == 0)
+                directory.delete();
         }
     }
-
+    //no hay nada más gallego que los pazos
+    
     private String getAttibuteValue(File f) throws IOException, FileNotFoundException, ParserConfigurationException, SAXException {
 
         String id = "";
@@ -90,7 +88,11 @@ public class ProcessRename {
         }
 
         File file = new File(dirOutput + "/" + nombreDocumento);
-        f.renameTo(file);
+        
+        if(rename)
+        {
+            f.renameTo(file);
+        }
     }
 
 }

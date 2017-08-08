@@ -1,0 +1,32 @@
+.body {
+    -fx-background-image:url(/img/background_grey.png);
+    -fx-background-repeat: repeat;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 3px;
+    -fx-background-color: none;
+    -fx-border-color: white;
+    -fx-cursor: hand;
+    -fx-focus-traversable: false;
+}
+
+.button-form {
+    -fx-border-radius: 0 3px 3px 0;
+}
+
+.button-info {
+    -fx-background-color: none;
+    -fx-border-color: none;
+}
+
+.input-form {
+    -fx-border-radius: 3px 0 0 3px;
+    -fx-border-color: white;
+}
+
+.title {
+    -fx-text-fill: white;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="230.0" prefWidth="576.0" styleClass="body" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.ua.gatesdocumentsrenamer.main.HomeController">
+   <children>
+      <Label layoutX="106.0" layoutY="14.0" styleClass="title" text="Gate's Documents Renamer">
+         <font>
+            <Font name="SansSerif Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="449.0" layoutY="64.0" mnemonicParsing="false" onAction="#selectDirectory" text="Corpus folder">
+         <font>
+            <Font name="SansSerif Regular" size="13.0" />
+         </font>
+         <styleClass>
+            <String fx:value="button" />
+            <String fx:value="button-form" />
+         </styleClass>
+      </Button>
+      <TextField fx:id="direct_selected" layoutX="9.0" layoutY="64.0" prefHeight="25.0" prefWidth="440.0" styleClass="input-form">
+         <font>
+            <Font name="SansSerif Regular" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="feature" layoutX="9.0" layoutY="103.0" promptText="Feature" text="ID">
+         <font>
+            <Font name="SansSerif Regular" size="13.0" />
+         </font>
+      </TextField>
+      <Button fx:id="info_button" layoutX="187.0" layoutY="103.0" mnemonicParsing="false" styleClass="button-info" />
+      <Button layoutX="483.0" layoutY="191.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="72.0" text="Close">
+         <font>
+            <Font name="SansSerif Regular" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="394.0" layoutY="191.0" mnemonicParsing="false" onAction="#rename" text="Rename">
+         <font>
+            <Font name="SansSerif Regular" size="13.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="68.0" fitWidth="283.0" layoutX="4.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
